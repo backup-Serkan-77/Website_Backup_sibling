@@ -1,0 +1,2051 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>SIBling Software — Geleceği Kodluyoruz, Birlikte.</title>
+<meta name="description" content="SIBling Software; web, mobil ve otomasyon alanlarında yenilikçi yazılım çözümleri üretir. Smart Attendance ile dijital dönüşümü hızlandırıyoruz.">
+<meta name="keywords" content="yazılım, mobil uygulama, web geliştirme, otomasyon, Smart Attendance, SIBling Software">
+<meta name="author" content="SIBling Software">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SIBling Software — Geleceği Kodluyoruz, Birlikte.">
+<meta property="og:description" content="Web, mobil ve otomasyon alanlarında yenilikçi yazılım çözümleri.">
+<meta property="og:url" content="https://siblingsoftware.com">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://siblingsoftware.com">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23A5B4FC'/%3E%3Cstop offset='100%25' stop-color='%2367E8F9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, monospace' font-weight='800' font-size='18' fill='%230a0a0a'%3ES%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Inter Variable (tek dosyada 100-900 weight axis) + Instrument Serif italic (vurgu) -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+
+<style>
+  /* ─── RESET & ROOT ─────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* ─── COLOR TOKENS ─────────────────────────────────────── */
+    --bg:          #0a0a0a;
+    --surface:     #0f0f0f;
+    --surface2:    #131313;
+    --fg:          #ffffff;
+    --muted:       hsl(0 0% 65%);
+    --muted2:      hsl(0 0% 45%);
+    --border:      rgba(165,180,252,0.10);
+    --border2:     rgba(255,255,255,0.06);
+    --hero-sub:    hsl(210 17% 95%);
+    --accent:      #A5B4FC;
+    --accent2:     #67E8F9;
+    --accent-grad: linear-gradient(135deg, #A5B4FC 0%, #67E8F9 100%);
+    --glow:        0 0 60px rgba(165,180,252,0.15);
+
+    /* ─── TYPOGRAPHY TOKENS ───────────────────────────────── */
+    /* Font families */
+    --ff-sans:     'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --ff-serif:    'Instrument Serif', ui-serif, Georgia, 'Times New Roman', serif;
+    --ff-mono:     ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace;
+
+    /* Modular scale 1.25 — base 16px (1rem). Mobile→Desktop fluid via clamp() */
+    --fs-2xs:      0.75rem;                                   /* 12px — micro labels */
+    --fs-xs:       clamp(0.8125rem, 0.78rem + 0.15vw, 0.875rem);   /* 13→14 — small/eyebrow */
+    --fs-sm:       clamp(0.875rem, 0.85rem + 0.2vw, 0.9375rem);    /* 14→15 — secondary */
+    --fs-base:     clamp(0.9375rem, 0.9rem + 0.25vw, 1rem);        /* 15→16 — body */
+    --fs-md:       clamp(1rem, 0.95rem + 0.3vw, 1.0625rem);        /* 16→17 — body large */
+    --fs-lg:       clamp(1.0625rem, 1rem + 0.4vw, 1.1875rem);      /* 17→19 — lead */
+    --fs-xl:       clamp(1.1875rem, 1.1rem + 0.5vw, 1.375rem);     /* 19→22 */
+    --fs-2xl:      clamp(1.375rem, 1.25rem + 0.8vw, 1.625rem);     /* 22→26 — h4/stat */
+    --fs-3xl:      clamp(1.625rem, 1.4rem + 1.2vw, 2rem);          /* 26→32 — h3 */
+    --fs-4xl:      clamp(2rem, 1.6rem + 2vw, 2.625rem);            /* 32→42 — h2 */
+    --fs-5xl:      clamp(2.5rem, 1.9rem + 3vw, 3.5rem);            /* 40→56 — display */
+    --fs-6xl:      clamp(2.75rem, 2rem + 4vw, 4.75rem);            /* 44→76 — hero */
+
+    /* Weights — limited & purposeful */
+    --fw-regular:  400;
+    --fw-medium:   500;
+    --fw-semibold: 600;
+    --fw-bold:     700;
+
+    /* Line heights — tight for display, relaxed for reading */
+    --lh-tight:    1.05;   /* hero / display */
+    --lh-snug:     1.15;   /* h2 / h3 */
+    --lh-normal:   1.4;    /* lead / large body */
+    --lh-relaxed:  1.65;   /* body paragraphs */
+    --lh-loose:    1.75;   /* long-form reading */
+
+    /* Letter spacing — negative tightens display, positive opens micro labels */
+    --ls-tightest: -0.045em;  /* hero */
+    --ls-tighter:  -0.03em;   /* h2 */
+    --ls-tight:    -0.015em;  /* h3 / lg body */
+    --ls-normal:   0;
+    --ls-wide:     0.02em;
+    --ls-wider:    0.06em;    /* eyebrow / button uppercase */
+  }
+
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--ff-sans);
+    font-size: var(--fs-base);
+    font-weight: var(--fw-regular);
+    line-height: var(--lh-relaxed);
+    letter-spacing: var(--ls-normal);
+    /* Inter optimization: kerning, contextual alternates, calt for Turkish dotted-İ pairing */
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'ss01' 1, 'cv11' 1;
+    font-variant-ligatures: common-ligatures contextual;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* Headings inherit clean defaults; per-class sizing below */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--ff-sans);
+    font-weight: var(--fw-bold);
+    color: var(--fg);
+    text-wrap: balance;
+  }
+  p { text-wrap: pretty; }
+
+  /* ─── TYPOGRAPHY UTILITY CLASSES ─────────────────────────── */
+  .t-hero {
+    font-size: var(--fs-6xl);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-tightest);
+  }
+  .t-h2 {
+    font-size: var(--fs-4xl);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-snug);
+    letter-spacing: var(--ls-tighter);
+  }
+  .t-h3 {
+    font-size: var(--fs-3xl);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-snug);
+    letter-spacing: var(--ls-tight);
+  }
+  .t-h4 {
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-snug);
+    letter-spacing: var(--ls-tight);
+  }
+  .t-lead {
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-regular);
+    line-height: var(--lh-normal);
+    letter-spacing: var(--ls-tight);
+    color: var(--hero-sub);
+  }
+  .t-body {
+    font-size: var(--fs-base);
+    font-weight: var(--fw-regular);
+    line-height: var(--lh-relaxed);
+    color: var(--muted);
+  }
+  .t-sm {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-regular);
+    line-height: var(--lh-normal);
+    color: var(--muted);
+  }
+  .t-eyebrow {
+    font-size: var(--fs-2xs);
+    font-weight: var(--fw-semibold);
+    line-height: 1.2;
+    letter-spacing: var(--ls-wider);
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .t-btn {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
+    line-height: 1;
+    letter-spacing: 0;
+    font-family: var(--ff-sans);
+  }
+  /* Numeric: tabular figures for stats/metrics — column alignment */
+  .t-num, .tabular {
+    font-variant-numeric: tabular-nums lining-nums;
+    font-feature-settings: 'tnum' 1, 'lnum' 1, 'kern' 1;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: rgba(165,180,252,0.3); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+  /* ─── LIQUID GLASS ─────────────────────────────────────────── */
+  .liquid-glass {
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: none;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  .liquid-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(180deg,
+      rgba(165,180,252,0.55) 0%,
+      rgba(165,180,252,0.18) 20%,
+      rgba(255,255,255,0)    40%,
+      rgba(255,255,255,0)    60%,
+      rgba(103,232,249,0.18) 80%,
+      rgba(103,232,249,0.55) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* ─── NAVBAR ───────────────────────────────────────────────── */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 80px;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid transparent;
+    transition: background .3s, border-color .3s;
+  }
+  .nav.scrolled {
+    background: rgba(10,10,10,0.85);
+    border-bottom-color: var(--border);
+  }
+  @media (max-width: 1024px) { .nav { padding: 10px 32px; } }
+  @media (max-width: 768px)  { .nav { padding: 8px 20px; } }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    text-decoration: none;
+    flex-shrink: 0;
+    padding: 4px 8px 4px 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    transition: opacity .2s, transform .2s;
+  }
+  .nav-logo:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  .nav-logo-img {
+    height: 56px;
+    width: auto;
+    display: block;
+    background: transparent;
+    -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: none;
+  }
+  @media (max-width: 1280px) { .nav-logo-img { height: 50px; } }
+  @media (max-width: 1024px) { .nav-logo-img { height: 44px; } }
+  @media (max-width: 768px)  { .nav-logo-img { height: 38px; } }
+  @media (max-width: 480px)  { .nav-logo-img { height: 32px; } }
+
+  /* Footer logosu */
+  .footer-logo { margin-bottom: 16px; padding: 4px 0; }
+  .footer-logo .nav-logo-img { height: 48px; }
+  @media (max-width: 768px) { .footer-logo .nav-logo-img { height: 40px; } }
+
+  /* Eski text-logo (kullanılmıyor ama footer için yedek olarak kalsın) */
+  .nav-logo-icon {
+    width: 32px; height: 32px;
+    border-radius: 9px;
+    background: var(--accent-grad);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    color: #0a0a0a;
+    font-size: 17px;
+    box-shadow: 0 4px 16px rgba(165,180,252,0.25);
+  }
+  .nav-logo-text {
+    font-size: var(--fs-md);
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-tighter);
+    color: #fff;
+  }
+  .nav-logo-text span { color: var(--accent); font-weight: var(--fw-medium); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+  }
+  @media (max-width: 900px) { .nav-links { display: none; } }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.65);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-medium);
+    text-decoration: none;
+    padding: 7px 14px;
+    border-radius: 8px;
+    transition: color .2s, background .2s;
+    letter-spacing: 0;
+  }
+  .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.06); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .lang-toggle {
+    display: flex;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 2px;
+    gap: 2px;
+  }
+  .lang-btn {
+    padding: 5px 11px;
+    border-radius: 6px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-family: var(--ff-sans);
+    font-size: var(--fs-2xs);
+    font-weight: var(--fw-semibold);
+    cursor: pointer;
+    transition: all .2s;
+    letter-spacing: var(--ls-wide);
+  }
+  .lang-btn.active {
+    background: var(--accent-grad);
+    color: #0a0a0a;
+  }
+
+  .nav-cta {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 9px 20px;
+    border-radius: 9px;
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0;
+    cursor: pointer;
+    font-family: var(--ff-sans);
+    transition: opacity .2s, transform .2s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  @media (max-width: 768px) { .nav-cta { display: none; } }
+  .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  .mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  @media (max-width: 900px) { .mobile-menu-btn { display: inline-block; } }
+
+  /* Mobile nav overlay */
+  .mobile-nav {
+    position: fixed;
+    inset: 0;
+    background: rgba(10,10,10,0.97);
+    backdrop-filter: blur(20px);
+    z-index: 200;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .mobile-nav-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  /* ─── HERO ─────────────────────────────────────────────────── */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 140px 24px 0;
+    overflow: hidden;
+    position: relative;
+  }
+  @media (max-width: 768px) { .hero { padding: 110px 20px 0; } }
+
+  /* Soft pastel glow background */
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 800px; height: 800px;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(165,180,252,0.10) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 500px; height: 500px;
+    top: 100px; right: -100px;
+    background: radial-gradient(circle, rgba(103,232,249,0.06) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 10px;
+    margin-bottom: 28px;
+    cursor: default;
+  }
+  .pill-new {
+    background: var(--accent-grad);
+    color: #0a0a0a;
+    border-radius: 6px;
+    font-size: var(--fs-2xs);
+    font-weight: var(--fw-bold);
+    padding: 3px 9px;
+    letter-spacing: var(--ls-wide);
+  }
+  .pill-text {
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-medium);
+    color: var(--muted);
+    letter-spacing: 0;
+  }
+
+  .hero-title {
+    font-size: var(--fs-6xl);
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-tightest);
+    line-height: var(--lh-tight);
+    margin-bottom: 20px;
+    color: #fff;
+    max-width: 920px;
+    text-wrap: balance;
+  }
+  .serif-italic {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    background: var(--accent-grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-regular);
+    line-height: var(--lh-normal);
+    letter-spacing: var(--ls-tight);
+    color: var(--hero-sub);
+    opacity: 0.85;
+    max-width: 560px;
+    margin-bottom: 36px;
+    text-wrap: pretty;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 64px;
+  }
+
+  .hero-cta {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 999px;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0;
+    cursor: pointer;
+    font-family: var(--ff-sans);
+    transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+  .hero-cta:hover  { transform: scale(1.04); box-shadow: 0 8px 32px rgba(255,255,255,0.18); }
+  .hero-cta:active { transform: scale(0.97); }
+
+  .hero-cta-ghost {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 13px 28px;
+    border-radius: 999px;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0;
+    cursor: pointer;
+    font-family: var(--ff-sans);
+    transition: all .25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+  .hero-cta-ghost:hover { background: rgba(255,255,255,0.06); border-color: var(--accent); }
+
+  /* ─── DASHBOARD ─────────────────────────────────────────────── */
+  .dash-section {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    max-height: 580px;
+    isolation: isolate;
+    contain: layout paint style;
+  }
+  @media (max-width: 768px) { .dash-section { max-height: 360px; } }
+
+  /* ─── Static Pastel Mesh Background (dashboard arkası) ───
+     Tamamen statik — animasyon yok, GPU yükü tek seferlik (sayfa açılışında render edilir, sonra dokunulmaz).
+     Renk uyumu + glass effect + vignette ile zaten premium derinlik veriyor. */
+  .dash-bg-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background:
+      radial-gradient(circle at 25% 30%, rgba(165,180,252,0.45) 0%, transparent 42%),
+      radial-gradient(circle at 75% 35%, rgba(103,232,249,0.38) 0%, transparent 45%),
+      radial-gradient(circle at 50% 80%, rgba(196,181,253,0.30) 0%, transparent 48%);
+    filter: blur(24px);
+  }
+
+  /* Film grain noise — sadece statik tile, blend mode YOK (CPU dostu) */
+  .dash-noise {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.18;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-size: 220px 220px;
+  }
+
+  /* Vignette — basit linear-ish gradient, daha hafif */
+  .dash-vignette {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+    background: radial-gradient(ellipse 85% 75% at 50% 50%,
+      transparent 55%,
+      rgba(10,10,10,0.5) 100%);
+  }
+
+  /* Mobil → blur azalt + noise gizle (CPU/batarya tasarrufu) */
+  @media (max-width: 900px) {
+    .dash-bg-glow { filter: blur(18px); }
+    .dash-noise   { display: none; }
+  }
+
+  .dash-image-wrap {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    will-change: transform;
+    padding: 0 24px;
+  }
+
+  .dash-mock {
+    width: 100%;
+    max-width: 920px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:
+      0 0 80px rgba(165,180,252,0.18),
+      0 0 40px rgba(103,232,249,0.10),
+      0 40px 80px rgba(0,0,0,0.7);
+  }
+
+  .dash-chrome {
+    display: flex; align-items: center; gap: 6px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border2);
+    background: rgba(255,255,255,0.02);
+  }
+  .dash-dot { width: 9px; height: 9px; border-radius: 50%; }
+  .dash-chrome-title {
+    margin-left: 16px;
+    font-size: var(--fs-2xs);
+    color: var(--muted2);
+    font-weight: var(--fw-medium);
+    letter-spacing: 0;
+  }
+
+  .dash-tabs {
+    display: flex; gap: 2px;
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border2);
+    background: rgba(255,255,255,0.01);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .dash-tabs::-webkit-scrollbar { display: none; }
+  .dash-tab {
+    font-size: var(--fs-2xs);
+    color: rgba(255,255,255,0.5);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+    white-space: nowrap;
+    font-weight: var(--fw-medium);
+    letter-spacing: 0;
+  }
+  .dash-tab.active { background: rgba(165,180,252,0.12); color: var(--accent); }
+  .dash-tab:hover:not(.active) { color: rgba(255,255,255,0.7); }
+
+  .dash-body {
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  @media (max-width: 480px) { .dash-body { grid-template-columns: 1fr 1fr; } }
+
+  .stat-card {
+    background: rgba(255,255,255,0.03);
+    border: 0.5px solid var(--border2);
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .stat-label {
+    font-size: var(--fs-2xs);
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: var(--ls-wider);
+    font-weight: var(--fw-semibold);
+  }
+  .stat-num {
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-bold);
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 6px;
+    letter-spacing: var(--ls-tight);
+    font-variant-numeric: tabular-nums lining-nums;
+    font-feature-settings: 'tnum' 1, 'lnum' 1, 'kern' 1;
+  }
+  .stat-up    { font-size: var(--fs-2xs); color: #4ade80;       font-weight: var(--fw-semibold); font-variant-numeric: tabular-nums; }
+  .stat-down  { font-size: var(--fs-2xs); color: #f87171;       font-weight: var(--fw-semibold); font-variant-numeric: tabular-nums; }
+  .stat-info  { font-size: var(--fs-2xs); color: var(--accent); font-weight: var(--fw-semibold); }
+
+  .dash-charts {
+    padding: 0 16px 16px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+  }
+  .chart-bar-wrap {
+    background: rgba(255,255,255,0.03);
+    border: 0.5px solid var(--border2);
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 100px;
+  }
+  .bar {
+    flex: 1;
+    background: var(--accent-grad);
+    border-radius: 3px 3px 0 0;
+    min-height: 4px;
+    opacity: 0.85;
+    transition: height .4s cubic-bezier(.16,1,.3,1);
+  }
+  .chart-pie-wrap {
+    background: rgba(255,255,255,0.03);
+    border: 0.5px solid var(--border2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+  }
+
+  .dash-fade {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 160px;
+    background: linear-gradient(to top, var(--bg) 0%, transparent 100%);
+    z-index: 20;
+    pointer-events: none;
+  }
+
+  /* ─── SECTION COMMONS ─────────────────────────────────────── */
+  .section {
+    padding: 100px 80px;
+    position: relative;
+  }
+  @media (max-width: 1024px) { .section { padding: 80px 32px; } }
+  @media (max-width: 768px)  { .section { padding: 64px 20px; } }
+
+  .section-tag {
+    display: inline-block;
+    font-size: var(--fs-2xs);
+    color: var(--accent);
+    background: rgba(165,180,252,0.08);
+    border: 1px solid rgba(165,180,252,0.2);
+    padding: 6px 14px;
+    border-radius: 999px;
+    letter-spacing: var(--ls-wider);
+    text-transform: uppercase;
+    font-weight: var(--fw-semibold);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-size: var(--fs-4xl);
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--ls-tighter);
+    line-height: var(--lh-snug);
+    margin-bottom: 16px;
+    color: #fff;
+    text-wrap: balance;
+  }
+
+  .section-sub {
+    font-size: var(--fs-md);
+    font-weight: var(--fw-regular);
+    color: var(--muted);
+    line-height: var(--lh-relaxed);
+    letter-spacing: var(--ls-tight);
+    max-width: 620px;
+    margin-bottom: 56px;
+    text-wrap: pretty;
+  }
+
+  .section-head-center { text-align: center; }
+  .section-head-center .section-sub { margin: 0 auto 56px; }
+
+  /* ─── FEATURES ─────────────────────────────────────────────── */
+  .features-section {
+    padding: 0 80px;
+    margin-top: 60px;
+  }
+  @media (max-width: 1024px) { .features-section { padding: 0 32px; } }
+  @media (max-width: 768px)  { .features-section { padding: 0 20px; } }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  @media (max-width: 900px) { .features-grid { grid-template-columns: 1fr; } }
+
+  .feature-card {
+    background: var(--surface);
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: background .3s;
+  }
+  .feature-card:hover { background: var(--surface2); }
+  .feature-icon {
+    width: 44px; height: 44px;
+    border-radius: 11px;
+    background: rgba(165,180,252,0.10);
+    border: 1px solid rgba(165,180,252,0.25);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 4px;
+  }
+  .feature-icon svg { width: 20px; height: 20px; color: var(--accent); }
+  .feature-title { font-size: var(--fs-md); font-weight: var(--fw-semibold); color: #fff; letter-spacing: var(--ls-tight); line-height: var(--lh-snug); }
+  .feature-desc  { font-size: var(--fs-sm); font-weight: var(--fw-regular); color: var(--muted); line-height: var(--lh-relaxed); letter-spacing: 0; }
+
+  /* ─── PROJECT (Smart Attendance) ───────────────────────────── */
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 0;
+  }
+  @media (max-width: 1024px) { .project-card { grid-template-columns: 1fr; } }
+
+  .pf-left { padding: 56px 48px; }
+  @media (max-width: 768px) { .pf-left { padding: 36px 28px; } }
+
+  .pf-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(74,222,128,0.10);
+    border: 1px solid rgba(74,222,128,0.25);
+    border-radius: 999px;
+    font-size: var(--fs-2xs);
+    color: #4ade80;
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--ls-wider);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #4ade80;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.3); }
+  }
+
+  .pf-title {
+    font-size: var(--fs-3xl);
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--ls-tighter);
+    line-height: var(--lh-snug);
+    margin-bottom: 14px;
+    color: #fff;
+    text-wrap: balance;
+  }
+  .pf-desc {
+    font-size: var(--fs-md);
+    font-weight: var(--fw-regular);
+    color: var(--muted);
+    line-height: var(--lh-relaxed);
+    letter-spacing: 0;
+    margin-bottom: 28px;
+    text-wrap: pretty;
+  }
+
+  .pf-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .pf-feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-regular);
+    color: rgba(255,255,255,0.88);
+    line-height: var(--lh-normal);
+  }
+  .pf-feature-check {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: rgba(165,180,252,0.15);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .pf-feature-check svg { width: 10px; height: 10px; color: var(--accent); }
+
+  .pf-right {
+    background: linear-gradient(135deg, rgba(165,180,252,0.06), rgba(103,232,249,0.04));
+    border-left: 1px solid var(--border);
+    padding: 56px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+  }
+  @media (max-width: 1024px) { .pf-right { border-left: none; border-top: 1px solid var(--border); padding: 36px 28px; } }
+
+  .pf-tech-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-medium);
+    color: rgba(255,255,255,0.88);
+    letter-spacing: 0;
+  }
+  .pf-tech-tag-icon {
+    width: 28px; height: 28px;
+    border-radius: 7px;
+    background: rgba(165,180,252,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+
+  /* ─── HOW IT WORKS ────────────────────────────────────────── */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    position: relative;
+  }
+  @media (max-width: 900px) { .steps-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .steps-grid { grid-template-columns: 1fr; } }
+
+  .step-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 20px;
+    position: relative;
+    transition: all .3s;
+  }
+  .step-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(165,180,252,0.3);
+    box-shadow: 0 0 30px rgba(165,180,252,0.08);
+  }
+
+  .step-num {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: var(--accent-grad);
+    color: #0a0a0a;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+  .step-title {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: var(--ls-tight);
+    line-height: var(--lh-snug);
+  }
+  .step-desc {
+    font-size: var(--fs-xs);
+    color: var(--muted);
+    line-height: var(--lh-relaxed);
+    letter-spacing: 0;
+  }
+
+  /* ─── ARCHITECTURE & ROLES ────────────────────────────────── */
+  .arch-grid, .roles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 900px) { .arch-grid, .roles-grid { grid-template-columns: 1fr; } }
+
+  .arch-card, .role-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 28px;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .arch-card:hover, .role-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(165,180,252,0.3);
+  }
+
+  .arch-icon, .role-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: rgba(165,180,252,0.10);
+    border: 1px solid rgba(165,180,252,0.2);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+    font-size: 22px;
+  }
+
+  .arch-title, .role-title {
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-semibold);
+    color: #fff;
+    margin-bottom: 10px;
+    letter-spacing: var(--ls-tight);
+    line-height: var(--lh-snug);
+  }
+  .arch-desc, .role-desc {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-regular);
+    color: var(--muted);
+    line-height: var(--lh-relaxed);
+    letter-spacing: 0;
+    margin-bottom: 16px;
+  }
+
+  .role-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .role-list-item {
+    font-size: var(--fs-xs);
+    color: rgba(255,255,255,0.75);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    line-height: var(--lh-normal);
+  }
+  .role-list-item::before {
+    content: '›';
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .role-card.admin .role-icon { background: rgba(248,113,113,0.10); border-color: rgba(248,113,113,0.25); }
+  .role-card.admin .role-list-item::before { color: #f87171; }
+
+  .role-card.instructor .role-icon { background: rgba(251,191,36,0.10); border-color: rgba(251,191,36,0.25); }
+  .role-card.instructor .role-list-item::before { color: #fbbf24; }
+
+  .role-card.student .role-icon { background: rgba(165,180,252,0.10); border-color: rgba(165,180,252,0.25); }
+
+  /* ─── TECH STACK ───────────────────────────────────────────── */
+  .tech-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 48px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 56px;
+    align-items: center;
+  }
+  @media (max-width: 1024px) { .tech-card { grid-template-columns: 1fr; gap: 32px; padding: 36px; } }
+  @media (max-width: 768px)  { .tech-card { padding: 28px; } }
+
+  .tech-left h3 {
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--ls-tight);
+    line-height: var(--lh-snug);
+    margin-bottom: 14px;
+    color: #fff;
+    text-wrap: balance;
+  }
+  .tech-left p {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-regular);
+    color: var(--muted);
+    line-height: var(--lh-relaxed);
+    letter-spacing: 0;
+  }
+
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  @media (max-width: 600px) { .tech-grid { grid-template-columns: 1fr; } }
+
+  .tech-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-medium);
+    color: rgba(255,255,255,0.88);
+    letter-spacing: 0;
+  }
+  .tech-item-icon {
+    font-size: 16px;
+  }
+
+  /* ─── COMING SOON (yerine testimonial) ───────────────────── */
+  .coming-section {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding: 100px 80px;
+  }
+  @media (max-width: 1024px) { .coming-section { padding: 80px 32px; } }
+  @media (max-width: 768px)  { .coming-section { padding: 64px 20px; min-height: auto; } }
+
+  .coming-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .coming-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: stretch;
+  }
+  @media (max-width: 900px) { .coming-grid { grid-template-columns: 1fr; } }
+
+  .coming-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: all .3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .coming-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    height: 100%;
+  }
+  .coming-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(165,180,252,0.3);
+    box-shadow: 0 0 40px rgba(165,180,252,0.10);
+  }
+  .coming-link:focus-visible .coming-card {
+    outline: 2px solid var(--accent2);
+    outline-offset: 3px;
+  }
+  .coming-card::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(165,180,252,0.06), transparent 50%);
+    pointer-events: none;
+  }
+
+  .coming-icon {
+    width: 52px; height: 52px;
+    border-radius: 13px;
+    background: var(--accent-grad);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .coming-title {
+    font-size: clamp(15px, 1.4vw, 18px);
+    font-weight: var(--fw-semibold);
+    color: #fff;
+    margin-bottom: 10px;
+    letter-spacing: var(--ls-tight);
+    line-height: var(--lh-snug);
+    position: relative;
+    z-index: 1;
+  }
+  .coming-desc {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-regular);
+    color: var(--muted);
+    line-height: var(--lh-relaxed);
+    letter-spacing: 0;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+  }
+  .coming-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(165,180,252,0.08);
+    border: 1px solid rgba(165,180,252,0.2);
+    border-radius: 999px;
+    font-size: var(--fs-2xs);
+    color: var(--accent);
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--ls-wider);
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── CTA BANNER ────────────────────────────────────────────── */
+  .cta-banner {
+    margin: 0 80px 96px;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 80px 64px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse at top, rgba(165,180,252,0.10), transparent 60%),
+      linear-gradient(135deg, rgba(165,180,252,0.04), rgba(103,232,249,0.03));
+    position: relative;
+    overflow: hidden;
+  }
+  @media (max-width: 1024px) { .cta-banner { margin: 0 32px 80px; padding: 60px 32px; } }
+  @media (max-width: 768px)  { .cta-banner { margin: 0 20px 64px; padding: 48px 24px; border-radius: 20px; } }
+
+  .cta-banner::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(165,180,252,0.12), transparent 70%);
+    top: -200px; left: 50%; transform: translateX(-50%);
+    pointer-events: none;
+  }
+  .cta-banner-title {
+    font-size: var(--fs-4xl);
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--ls-tighter);
+    line-height: var(--lh-snug);
+    margin-bottom: 16px;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    text-wrap: balance;
+  }
+  .cta-banner-title .serif-italic {
+    background: var(--accent-grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cta-banner-sub {
+    font-size: var(--fs-md);
+    font-weight: var(--fw-regular);
+    color: var(--muted);
+    margin-bottom: 36px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: var(--lh-relaxed);
+    letter-spacing: var(--ls-tight);
+    position: relative;
+    z-index: 1;
+    text-wrap: pretty;
+  }
+  .cta-banner-btn {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 15px 38px;
+    border-radius: 999px;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
+    cursor: pointer;
+    font-family: var(--ff-sans);
+    transition: transform .25s, box-shadow .25s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .cta-banner-btn:hover  { transform: scale(1.04); box-shadow: 0 8px 32px rgba(255,255,255,0.2); }
+  .cta-banner-btn:active { transform: scale(0.97); }
+
+  /* ─── FOOTER ────────────────────────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--border);
+    background:
+      linear-gradient(to bottom, transparent, rgba(165,180,252,0.02));
+    padding: 64px 80px 32px;
+    position: relative;
+  }
+  @media (max-width: 1024px) { footer { padding: 56px 32px 28px; } }
+  @media (max-width: 768px)  { footer { padding: 48px 20px 24px; } }
+
+  footer::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 10%; right: 10%;
+    height: 1px;
+    background: var(--accent-grad);
+    opacity: 0.4;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(4, 1fr);
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; } }
+  @media (max-width: 600px)  { .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
+
+  .footer-brand-col .nav-logo { margin-bottom: 16px; }
+  .footer-brand-desc {
+    font-size: var(--fs-xs);
+    color: var(--muted);
+    line-height: var(--lh-relaxed);
+    letter-spacing: 0;
+    max-width: 300px;
+  }
+
+  .footer-col-title {
+    font-size: var(--fs-2xs);
+    color: var(--accent);
+    font-weight: var(--fw-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-wider);
+    margin-bottom: 16px;
+  }
+
+  .footer-col-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-col-list a {
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-regular);
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .2s;
+    letter-spacing: 0;
+  }
+  .footer-col-list a:hover { color: #fff; }
+
+  .footer-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .footer-social a {
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border2);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted);
+    text-decoration: none;
+    transition: all .2s;
+  }
+  .footer-social a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(165,180,252,0.05);
+    transform: translateY(-2px);
+  }
+  .footer-social svg { width: 16px; height: 16px; }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border2);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-copy {
+    font-size: var(--fs-2xs);
+    color: var(--muted2);
+    letter-spacing: 0;
+  }
+  .footer-bottom-links {
+    display: flex;
+    gap: 20px;
+  }
+  .footer-bottom-links a {
+    font-size: var(--fs-2xs);
+    color: var(--muted2);
+    text-decoration: none;
+    transition: color .2s;
+    letter-spacing: 0;
+  }
+  .footer-bottom-links a:hover { color: var(--accent); }
+
+  /* ─── ENTRANCE ANIMATIONS ───────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .au { opacity: 0; animation: fadeUp .7s cubic-bezier(.16,1,.3,1) forwards; }
+  .au-0 { animation-delay: .05s; }
+  .au-1 { animation-delay: .15s; }
+  .au-2 { animation-delay: .25s; }
+  .au-3 { animation-delay: .35s; }
+  .au-4 { animation-delay: .45s; }
+  .au-5 { animation-delay: .55s; }
+
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══════════════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <a class="nav-logo" href="#" aria-label="SIBling Software">
+    <img class="nav-logo-img" src="assets/logo-white.png" alt="SIBling Software" />
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#about" data-tr="Hakkımızda" data-en="About">Hakkımızda</a></li>
+    <li><a href="#features" data-tr="Hizmetler" data-en="Services">Hizmetler</a></li>
+    <li><a href="#project" data-tr="Proje" data-en="Project">Proje</a></li>
+    <li><a href="#architecture" data-tr="Mimari" data-en="Architecture">Mimari</a></li>
+    <li><a href="#coming" data-tr="Yakında" data-en="Soon">Yakında</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('tr')" id="lang-tr">TR</button>
+      <button class="lang-btn" onclick="setLang('en')" id="lang-en">EN</button>
+    </div>
+    <a class="nav-cta" href="https://www.instagram.com/siblingsoftware?igsh=d3d2em52bmI2a2hl" target="_blank" rel="noopener noreferrer" data-tr="Bize Ulaşın" data-en="Contact Us">Bize Ulaşın</a>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+  </div>
+</nav>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="toggleMobileMenu()">✕</button>
+  <a href="#about" onclick="toggleMobileMenu()" data-tr="Hakkımızda" data-en="About">Hakkımızda</a>
+  <a href="#features" onclick="toggleMobileMenu()" data-tr="Hizmetler" data-en="Services">Hizmetler</a>
+  <a href="#project" onclick="toggleMobileMenu()" data-tr="Proje" data-en="Project">Proje</a>
+  <a href="#architecture" onclick="toggleMobileMenu()" data-tr="Mimari" data-en="Architecture">Mimari</a>
+  <a href="#coming" onclick="toggleMobileMenu()" data-tr="Yakında" data-en="Soon">Yakında</a>
+  <a href="https://www.instagram.com/siblingsoftware?igsh=d3d2em52bmI2a2hl" target="_blank" rel="noopener noreferrer" data-tr="Bize Ulaşın" data-en="Contact Us">Bize Ulaşın</a>
+</div>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════ -->
+<section class="hero">
+
+  <div class="hero-pill liquid-glass au au-0">
+    <span class="pill-new" data-tr="YENİ" data-en="NEW">YENİ</span>
+    <span class="pill-text" data-tr="Smart Attendance System v3.0.0" data-en="Smart Attendance System v3.0.0">Smart Attendance System v3.0.0</span>
+  </div>
+
+  <h1 class="hero-title au au-1">
+    <span data-tr="Geleceği Kodluyoruz," data-en="We Build the Future,">Geleceği Kodluyoruz,</span><br>
+    <span class="serif-italic" data-tr="Birlikte." data-en="Together.">Birlikte.</span>
+  </h1>
+
+  <p class="hero-subtitle au au-2" data-tr="Web, mobil ve otomasyon alanlarında yenilikçi yazılım çözümleri üretiyoruz. Fikirlerinizi ürüne dönüştürüyoruz." data-en="We build innovative software solutions in web, mobile and automation. We transform your ideas into products.">
+    Web, mobil ve otomasyon alanlarında yenilikçi yazılım çözümleri üretiyoruz. Fikirlerinizi ürüne dönüştürüyoruz.
+  </p>
+
+  <div class="hero-actions au au-3">
+    <a class="hero-cta" href="#project" data-tr="Projeyi İncele" data-en="View Project">Projeyi İncele</a>
+    <a class="hero-cta-ghost" href="#features" data-tr="Hizmetler" data-en="Services">Hizmetler</a>
+  </div>
+
+  <!-- Dashboard Mockup -->
+  <div class="dash-section au au-4" id="dashSection">
+    <div class="dash-bg-glow"></div>
+    <div class="dash-noise"></div>
+    <div class="dash-vignette"></div>
+    <div class="dash-image-wrap" id="dashImg">
+      <div class="dash-mock">
+        <div class="dash-chrome">
+          <div class="dash-dot" style="background:#ff5f57"></div>
+          <div class="dash-dot" style="background:#febc2e"></div>
+          <div class="dash-dot" style="background:#28c840"></div>
+          <span class="dash-chrome-title">smart-attendance.siblingsoftware.com</span>
+        </div>
+        <div class="dash-tabs">
+          <div class="dash-tab active" data-tr="Genel Bakış" data-en="Overview">Genel Bakış</div>
+          <div class="dash-tab" data-tr="Analitik" data-en="Analytics">Analitik</div>
+          <div class="dash-tab" data-tr="Raporlar" data-en="Reports">Raporlar</div>
+          <div class="dash-tab" data-tr="Ayarlar" data-en="Settings">Ayarlar</div>
+        </div>
+        <div class="dash-body">
+          <div class="stat-card">
+            <div class="stat-label" data-tr="Yoklama Oranı" data-en="Attendance Rate">Yoklama Oranı</div>
+            <div class="stat-num">94.8%</div>
+            <div class="stat-up" data-tr="↑ %3.2 bu hafta" data-en="↑ 3.2% this week">↑ %3.2 bu hafta</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label" data-tr="Aktif Öğrenci" data-en="Active Students">Aktif Öğrenci</div>
+            <div class="stat-num">12,431</div>
+            <div class="stat-up" data-tr="↑ %8.1 yeni kayıt" data-en="↑ 8.1% new sign-ups">↑ %8.1 yeni kayıt</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label" data-tr="Yüz Tanıma Doğr." data-en="Face Recog. Acc.">Yüz Tanıma Doğr.</div>
+            <div class="stat-num">99.2%</div>
+            <div class="stat-info" data-tr="● AI Aktif" data-en="● AI Active">● AI Aktif</div>
+          </div>
+        </div>
+        <div class="dash-charts">
+          <div class="chart-bar-wrap" id="barChart"></div>
+          <div class="chart-pie-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68">
+              <circle cx="30" cy="30" r="22" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="10"/>
+              <circle cx="30" cy="30" r="22" fill="none" stroke="#A5B4FC" stroke-width="10"
+                stroke-dasharray="83 55" stroke-dashoffset="-14" stroke-linecap="round"/>
+              <circle cx="30" cy="30" r="22" fill="none" stroke="#67E8F9" stroke-width="10"
+                stroke-dasharray="35 103" stroke-dashoffset="-97" stroke-linecap="round"/>
+              <circle cx="30" cy="30" r="22" fill="none" stroke="#fbbf24" stroke-width="10"
+                stroke-dasharray="20 118" stroke-dashoffset="-132" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dash-fade"></div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT (Mission/Vision/Approach/Security) ════════════════ -->
+<section class="section" id="about">
+  <div style="max-width:1280px;margin:0 auto">
+    <div class="section-head-center" style="text-align:center">
+      <span class="section-tag" data-tr="Hakkımızda" data-en="About Us">Hakkımızda</span>
+      <h2 class="section-title" data-tr="Yazılımı Sanat Olarak Görüyoruz" data-en="We See Software as an Art">Yazılımı Sanat Olarak Görüyoruz</h2>
+      <p class="section-sub" style="margin:0 auto 56px" data-tr="SIBling Software olarak, teknoloji ile yaratıcılığı birleştirerek işletmelerin dijital dönüşümünü hızlandırıyoruz. Her proje bir fırsattır, her satır kod bir adımdır." data-en="At SIBling Software, we combine technology with creativity to accelerate the digital transformation of businesses. Every project is an opportunity, every line of code is a step forward.">
+        SIBling Software olarak, teknoloji ile yaratıcılığı birleştirerek işletmelerin dijital dönüşümünü hızlandırıyoruz.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px" class="about-grid reveal">
+      <div class="arch-card">
+        <div class="arch-icon">🎯</div>
+        <div class="arch-title" data-tr="Misyon" data-en="Mission">Misyon</div>
+        <div class="arch-desc" data-tr="Kullanıcı odaklı, ölçeklenebilir ve güvenli dijital ürünler geliştirmek." data-en="Develop user-centric, scalable and secure digital products.">Kullanıcı odaklı, ölçeklenebilir ve güvenli dijital ürünler geliştirmek.</div>
+      </div>
+      <div class="arch-card">
+        <div class="arch-icon">🚀</div>
+        <div class="arch-title" data-tr="Vizyon" data-en="Vision">Vizyon</div>
+        <div class="arch-desc" data-tr="Türkiye'nin en yenilikçi yazılım şirketlerinden biri olmak." data-en="To become one of Turkey's most innovative software companies.">Türkiye'nin en yenilikçi yazılım şirketlerinden biri olmak.</div>
+      </div>
+      <div class="arch-card">
+        <div class="arch-icon">⚡</div>
+        <div class="arch-title" data-tr="Yaklaşım" data-en="Approach">Yaklaşım</div>
+        <div class="arch-desc" data-tr="Hızlı iterasyon, sürekli öğrenme ve müşteri odaklı geliştirme." data-en="Fast iteration, continuous learning and customer-focused development.">Hızlı iterasyon, sürekli öğrenme ve müşteri odaklı geliştirme.</div>
+      </div>
+      <div class="arch-card">
+        <div class="arch-icon">🛡️</div>
+        <div class="arch-title" data-tr="Güvenlik" data-en="Security">Güvenlik</div>
+        <div class="arch-desc" data-tr="Her projede güvenlik birinci öncelik, tasarımın bir parçası." data-en="Security is the first priority and part of the design in every project.">Her projede güvenlik birinci öncelik, tasarımın bir parçası.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 1024px) { .about-grid { grid-template-columns: repeat(2,1fr) !important; } }
+  @media (max-width: 600px)  { .about-grid { grid-template-columns: 1fr !important; } }
+</style>
+
+<!-- ═══ FEATURES (Hizmetler) ══════════════════════════════════════ -->
+<section class="features-section reveal" id="features" style="padding-top:40px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div class="section-head-center" style="text-align:center;margin-bottom:48px">
+      <span class="section-tag" data-tr="Hizmetler" data-en="Services">Hizmetler</span>
+      <h2 class="section-title" data-tr="Çalışma Alanlarımız" data-en="Our Domains">Çalışma Alanlarımız</h2>
+      <p class="section-sub" style="margin:0 auto" data-tr="Üç kritik alanda uzmanlaşmış ekibimizle dijital ihtiyaçlarınızı karşılıyoruz." data-en="We meet your digital needs with our team specialized in three critical areas.">Üç kritik alanda uzmanlaşmış ekibimizle dijital ihtiyaçlarınızı karşılıyoruz.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <div class="feature-title" data-tr="Web Uygulama" data-en="Web Application">Web Uygulama</div>
+        <div class="feature-desc" data-tr="Modern, hızlı ve ölçeklenebilir web uygulamaları. React, Next.js ve cloud teknolojileri ile üretim kalitesinde çözümler." data-en="Modern, fast and scalable web applications. Production-quality solutions with React, Next.js and cloud technologies.">Modern, hızlı ve ölçeklenebilir web uygulamaları. React, Next.js ve cloud teknolojileri ile üretim kalitesinde çözümler.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="2" width="14" height="20" rx="3"/>
+            <line x1="12" y1="18" x2="12.01" y2="18"/>
+          </svg>
+        </div>
+        <div class="feature-title" data-tr="Mobil Uygulama" data-en="Mobile Application">Mobil Uygulama</div>
+        <div class="feature-desc" data-tr="iOS ve Android için native performanslı uygulamalar. Flutter ve React Native ile cross-platform geliştirme." data-en="Native performance apps for iOS and Android. Cross-platform development with Flutter and React Native.">iOS ve Android için native performanslı uygulamalar. Flutter ve React Native ile cross-platform geliştirme.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h0a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h0a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </div>
+        <div class="feature-title" data-tr="Otomasyon" data-en="Automation">Otomasyon</div>
+        <div class="feature-desc" data-tr="İş süreçlerinizi otomatize edin. RPA, CI/CD pipeline ve akıllı otomasyon çözümleri ile verimliliği artırın." data-en="Automate your business processes. Increase efficiency with RPA, CI/CD pipeline and smart automation solutions.">İş süreçlerinizi otomatize edin. RPA, CI/CD pipeline ve akıllı otomasyon çözümleri ile verimliliği artırın.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROJECT (Smart Attendance) ═══════════════════════════════ -->
+<section class="section reveal" id="project">
+  <div style="max-width:1280px;margin:0 auto">
+    <div class="section-head-center" style="text-align:center;margin-bottom:48px">
+      <span class="section-tag" data-tr="Aktif Proje" data-en="Active Project">Aktif Proje</span>
+      <h2 class="section-title" data-tr="Şu An Üzerinde Çalıştığımız" data-en="What We're Building Now">Şu An Üzerinde Çalıştığımız</h2>
+    </div>
+
+    <div class="project-card">
+      <div class="pf-left">
+        <div class="pf-status">
+          <span class="status-dot"></span>
+          <span data-tr="Aktif Geliştirme" data-en="Active Development">Aktif Geliştirme</span>
+        </div>
+        <h3 class="pf-title">Smart Attendance System</h3>
+        <p class="pf-desc" data-tr="Öğretmenlerin oturum başlatıp QR kod ürettiği, öğrencilerin QR tarama → yüz doğrulama → konum doğrulama adımlarını sırasıyla tamamlayarak yoklama aldığı 3 aşamalı akıllı sistem. FastAPI backend, React Native (Expo) mobil uygulama ve React.js web panelden oluşur." data-en="A 3-step smart system where teachers start sessions and generate QR codes, while students complete QR scan → face verification → GPS verification in order. Built with a FastAPI backend, React Native (Expo) mobile app, and React.js web panel.">
+          Öğretmenlerin oturum başlatıp QR kod ürettiği, öğrencilerin QR tarama → yüz doğrulama → konum doğrulama adımlarını tamamlayarak yoklama aldığı 3 aşamalı akıllı sistem.
+        </p>
+        <div class="pf-features">
+          <div class="pf-feature">
+            <div class="pf-feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span data-tr="Yapay Zeka Yüz Tanıma" data-en="AI Face Recognition">Yapay Zeka Yüz Tanıma</span>
+          </div>
+          <div class="pf-feature">
+            <div class="pf-feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span data-tr="QR Kod Tarama" data-en="QR Code Scanning">QR Kod Tarama</span>
+          </div>
+          <div class="pf-feature">
+            <div class="pf-feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span data-tr="GPS Konum Doğrulama" data-en="GPS Location Verification">GPS Konum Doğrulama</span>
+          </div>
+          <div class="pf-feature">
+            <div class="pf-feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span data-tr="Bildirim & İtiraz Sistemi" data-en="Notification & Dispute System">Bildirim & İtiraz Sistemi</span>
+          </div>
+        </div>
+        <a class="hero-cta" href="#how-it-works" data-tr="Nasıl Çalışır" data-en="How It Works" style="margin:0">Nasıl Çalışır</a>
+      </div>
+      <div class="pf-right">
+        <div class="pf-tech-tag">
+          <div class="pf-tech-tag-icon">📷</div>
+          <span>InsightFace buffalo_l</span>
+        </div>
+        <div class="pf-tech-tag">
+          <div class="pf-tech-tag-icon">📍</div>
+          <span>Haversine Geofence · GPS</span>
+        </div>
+        <div class="pf-tech-tag">
+          <div class="pf-tech-tag-icon">📱</div>
+          <span>QR Token · OTP Flow</span>
+        </div>
+        <div class="pf-tech-tag">
+          <div class="pf-tech-tag-icon">🔐</div>
+          <span>JWT · bcrypt · RBAC</span>
+        </div>
+        <div class="pf-tech-tag">
+          <div class="pf-tech-tag-icon">⚡</div>
+          <span>FastAPI · 13 API Modülü</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══════════════════════════════════════════════ -->
+<section class="section reveal" id="how-it-works" style="padding-top:0">
+  <div style="max-width:1280px;margin:0 auto">
+    <div class="section-head-center" style="text-align:center;margin-bottom:48px">
+      <span class="section-tag" data-tr="Süreç" data-en="Process">Süreç</span>
+      <h2 class="section-title" data-tr="Nasıl Çalışır?" data-en="How Does It Work?">Nasıl Çalışır?</h2>
+      <p class="section-sub" style="margin:0 auto" data-tr="3 katmanlı güvenlik doğrulamasıyla saniyeler içinde yoklama." data-en="Attendance in seconds with 3-layer security verification.">3 katmanlı güvenlik doğrulamasıyla saniyeler içinde yoklama.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-title" data-tr="Oturum Başlat" data-en="Start Session">Oturum Başlat</div>
+        <div class="step-desc" data-tr="Öğretmen uygulamadan yoklama oturumu başlatır; sistem otomatik QR token üretir." data-en="Instructor starts an attendance session from the app; system automatically generates a QR token.">Öğretmen uygulamadan yoklama oturumu başlatır; sistem otomatik QR token üretir.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-title" data-tr="QR Tarama" data-en="QR Scan">QR Tarama</div>
+        <div class="step-desc" data-tr="Öğrenci mobil uygulamayla QR kodu tarar. Backend token geçerliliğini ve süresini doğrular." data-en="Student scans the QR code with the mobile app. Backend verifies token validity and expiry.">Öğrenci mobil uygulamayla QR kodu tarar. Backend token geçerliliğini ve süresini doğrular.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-title" data-tr="Yüz Doğrulama" data-en="Face Verification">Yüz Doğrulama</div>
+        <div class="step-desc" data-tr="İki kare görsel InsightFace motoruna gönderilir; embedding karşılaştırması ve pasif canlılık kontrolü yapılır." data-en="Two video frames are sent to the InsightFace engine for embedding comparison and passive liveness check.">İki kare görsel InsightFace motoruna gönderilir; embedding karşılaştırması ve pasif canlılık kontrolü yapılır.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <div class="step-title" data-tr="GPS Doğrulama" data-en="GPS Verification">GPS Doğrulama</div>
+        <div class="step-desc" data-tr="Öğrencinin konumu Haversine formülüyle hesaplanır; sınıf yarıçapı içinde mi kontrol edilir." data-en="Student's location is calculated with the Haversine formula; system checks if they're within the classroom radius.">Öğrencinin konumu Haversine formülüyle hesaplanır; sınıf yarıçapı içinde mi kontrol edilir.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">05</div>
+        <div class="step-title" data-tr="Yoklama Onaylandı" data-en="Attendance Confirmed">Yoklama Onaylandı</div>
+        <div class="step-desc" data-tr="3 adım tamamlandı; FinalAttendanceRecord oluşturulur ve öğrenciye anlık bildirim gönderilir." data-en="All 3 steps complete; FinalAttendanceRecord is created and an instant notification is sent to the student.">3 adım tamamlandı; FinalAttendanceRecord oluşturulur ve öğrenciye anlık bildirim gönderilir.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ARCHITECTURE ════════════════════════════════════════════════ -->
+<section class="section reveal" id="architecture" style="padding-top:0">
+  <div style="max-width:1280px;margin:0 auto">
+    <div class="section-head-center" style="text-align:center;margin-bottom:48px">
+      <span class="section-tag" data-tr="Mimari" data-en="Architecture">Mimari</span>
+      <h2 class="section-title" data-tr="3 Katmanlı Sistem Mimarisi" data-en="3-Layer System Architecture">3 Katmanlı Sistem Mimarisi</h2>
+    </div>
+
+    <div class="arch-grid">
+      <div class="arch-card">
+        <div class="arch-icon">📱</div>
+        <div class="arch-title" data-tr="Mobil Uygulama" data-en="Mobile App">Mobil Uygulama</div>
+        <div class="arch-desc" data-tr="React Native (Expo) ile iOS & Android cross-platform uygulama. QR tarama, yüz doğrulama, GPS ve bildirim modülleri. Port 8081." data-en="React Native (Expo) cross-platform app for iOS & Android. QR scanning, face verification, GPS and notification modules. Port 8081.">React Native (Expo) · iOS & Android · QR tarama, yüz doğrulama, GPS ve bildirim modülleri.</div>
+      </div>
+      <div class="arch-card">
+        <div class="arch-icon">🌐</div>
+        <div class="arch-title" data-tr="Web Panel" data-en="Web Panel">Web Panel</div>
+        <div class="arch-desc" data-tr="React.js (CRA) ile admin ve öğretmen arayüzü. Mazeret yönetimi, bildirim zili, yoklama kayıtları ve itiraz modülleri. Port 3000." data-en="React.js (CRA) admin and instructor interface. Excuse management, notification bell, attendance records and dispute modules. Port 3000.">React.js (CRA) · Admin & öğretmen paneli · Mazeret, itiraz ve bildirim modülleri. Port 3000.</div>
+      </div>
+      <div class="arch-card">
+        <div class="arch-icon">⚡</div>
+        <div class="arch-title" data-tr="Backend & API" data-en="Backend & API">Backend & API</div>
+        <div class="arch-desc" data-tr="FastAPI + SQLAlchemy · 13 API modülü · JWT + bcrypt kimlik doğrulama · RBAC · Alembic migration · SQLite (dev) / PostgreSQL (prod). Port 8000." data-en="FastAPI + SQLAlchemy · 13 API modules · JWT + bcrypt auth · RBAC · Alembic migration · SQLite (dev) / PostgreSQL (prod). Port 8000.">FastAPI + SQLAlchemy · 13 API modülü · JWT + RBAC · Alembic · SQLite (dev) / PostgreSQL (prod). Port 8000.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ROLES ═══════════════════════════════════════════════════════ -->
+<section class="section reveal" id="roles" style="padding-top:0">
+  <div style="max-width:1280px;margin:0 auto">
+    <div class="section-head-center" style="text-align:center;margin-bottom:48px">
+      <span class="section-tag" data-tr="Kullanıcılar" data-en="Users">Kullanıcılar</span>
+      <h2 class="section-title" data-tr="3 Kullanıcı Rolü" data-en="3 User Roles">3 Kullanıcı Rolü</h2>
+      <p class="section-sub" style="margin:0 auto" data-tr="Her kullanıcı tipine özel ekran ve yetkiler." data-en="Dedicated screens and permissions for each user type.">Her kullanıcı tipine özel ekran ve yetkiler.</p>
+    </div>
+
+    <div class="roles-grid">
+      <div class="role-card admin">
+        <div class="role-icon">👑</div>
+        <div class="role-title">Admin</div>
+        <div class="role-desc" data-tr="Okul Yönetimi" data-en="School Management" style="font-size:12px;color:#f87171;text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:14px">Okul Yönetimi</div>
+        <div class="role-list">
+          <div class="role-list-item" data-tr="Tüm raporlara erişim" data-en="Access to all reports">Tüm raporlara erişim</div>
+          <div class="role-list-item" data-tr="Kullanıcı yönetimi" data-en="User management">Kullanıcı yönetimi</div>
+          <div class="role-list-item" data-tr="Sistem ayarları" data-en="System settings">Sistem ayarları</div>
+          <div class="role-list-item" data-tr="Okul geneli istatistik" data-en="School-wide statistics">Okul geneli istatistik</div>
+        </div>
+      </div>
+      <div class="role-card instructor">
+        <div class="role-icon">👨‍🏫</div>
+        <div class="role-title" data-tr="Eğitmen" data-en="Instructor">Eğitmen</div>
+        <div class="role-desc" data-tr="Ders Yönetimi" data-en="Course Management" style="font-size:12px;color:#fbbf24;text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:14px">Ders Yönetimi</div>
+        <div class="role-list">
+          <div class="role-list-item" data-tr="QR kod oluşturma" data-en="QR code generation">QR kod oluşturma</div>
+          <div class="role-list-item" data-tr="Yoklama başlatma" data-en="Start attendance">Yoklama başlatma</div>
+          <div class="role-list-item" data-tr="Sınıf raporları" data-en="Class reports">Sınıf raporları</div>
+          <div class="role-list-item" data-tr="Öğrenci takibi" data-en="Student tracking">Öğrenci takibi</div>
+        </div>
+      </div>
+      <div class="role-card student">
+        <div class="role-icon">🎓</div>
+        <div class="role-title" data-tr="Öğrenci" data-en="Student">Öğrenci</div>
+        <div class="role-desc" data-tr="Mobil Erişim" data-en="Mobile Access" style="font-size:12px;color:#A5B4FC;text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:14px">Mobil Erişim</div>
+        <div class="role-list">
+          <div class="role-list-item" data-tr="Yoklamaya katılma" data-en="Attend roll-call">Yoklamaya katılma</div>
+          <div class="role-list-item" data-tr="Devamsızlık geçmişi" data-en="Absence history">Devamsızlık geçmişi</div>
+          <div class="role-list-item" data-tr="Ders programı" data-en="Class schedule">Ders programı</div>
+          <div class="role-list-item" data-tr="Bildirimler" data-en="Notifications">Bildirimler</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TECH STACK ════════════════════════════════════════════════ -->
+<section class="section reveal" id="tech" style="padding-top:0">
+  <div style="max-width:1280px;margin:0 auto">
+    <div class="tech-card">
+      <div class="tech-left">
+        <span class="section-tag" data-tr="Teknoloji" data-en="Tech Stack">Teknoloji</span>
+        <h3 data-tr="Modern Stack ile Üretim Kalitesinde Geliştirme" data-en="Production-Quality Development with a Modern Stack">Modern Stack ile Üretim Kalitesinde Geliştirme</h3>
+        <p data-tr="Hızlı geliştirme, kolay bakım ve ölçeklenebilir altyapı için sektör standardı araçlar." data-en="Industry-standard tools for fast development, easy maintenance and scalable infrastructure.">Hızlı geliştirme, kolay bakım ve ölçeklenebilir altyapı için sektör standardı araçlar.</p>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-item"><span class="tech-item-icon">⚛️</span><span>React Native (Expo)</span></div>
+        <div class="tech-item"><span class="tech-item-icon">🌐</span><span>React.js (CRA)</span></div>
+        <div class="tech-item"><span class="tech-item-icon">🐍</span><span>Python · FastAPI</span></div>
+        <div class="tech-item"><span class="tech-item-icon">🗄️</span><span>SQLAlchemy · Alembic</span></div>
+        <div class="tech-item"><span class="tech-item-icon">🐘</span><span>PostgreSQL · SQLite</span></div>
+        <div class="tech-item"><span class="tech-item-icon">🐳</span><span>Docker · Docker Compose</span></div>
+        <div class="tech-item"><span class="tech-item-icon">🤖</span><span>InsightFace · Fernet</span></div>
+        <div class="tech-item"><span class="tech-item-icon">🔒</span><span>JWT · bcrypt · RBAC</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COMING SOON (testimonial yerine) ══════════════════════════ -->
+<section class="coming-section reveal" id="coming">
+  <div class="coming-inner">
+    <div class="section-head-center" style="text-align:center;margin-bottom:56px">
+      <span class="section-tag" data-tr="Yakında" data-en="Coming Soon">Aktif Olarak Geliştirdiğimiz Diğer Projeler</span>
+      <h2 class="section-title">
+        <span data-tr="Diğer" data-en="Our Other">Diğer</span>
+        <span class="serif-italic" data-tr="Projelerimiz." data-en="Projects.">Projelerimiz.</span>
+      </h2>
+      <p class="section-sub" style="margin:0 auto" data-tr="Projelerimizin detaylarını landing page'ler üzerinden inceleyebilirsiniz." data-en="You can explore our project details via dedicated landing pages.">Projelerimizin detaylarını landing page'ler üzerinden inceleyebilirsiniz.</p>
+    </div>
+
+    <div class="coming-grid">
+      <a class="coming-link" href="landing_pages/DOKUMAN.html">
+        <div class="coming-card">
+          <div class="coming-icon">📅</div>
+          <div class="coming-title">SIBling Booking</div>
+          <p class="coming-desc" data-tr="Berber, oto yıkama, klinik ve randevu ile çalışan tüm işletmeler için çok kanallı randevu otomasyon platformu." data-en="A multi-channel booking automation platform for barbers, car wash services, clinics, and all appointment-based businesses.">
+            Berber, oto yıkama, klinik ve randevu ile çalışan tüm işletmeler için çok kanallı randevu otomasyon platformu.
+          </p>
+          <div class="coming-meta" data-tr="Proje Detaylarını Gör" data-en="View Project Details">Proje Detaylarını Gör</div>
+        </div>
+      </a>
+      <a class="coming-link" href="landing_pages/DOKUMAN2.html">
+        <div class="coming-card">
+          <div class="coming-icon">🏨</div>
+          <div class="coming-title">SIBling Hotel Management</div>
+          <p class="coming-desc" data-tr="Otellere özel masaüstü yönetim yazılımı. Gerçek zamanlı oda takibi, muhasebe, çoklu döviz, Telegram botu ve AI entegrasyonu tek platformda." data-en="Desktop management software built for hotels. Real-time room tracking, accounting, multi-currency, Telegram bot and AI integration in one platform.">
+            Otellere özel masaüstü yönetim yazılımı. Gerçek zamanlı oda takibi, muhasebe, çoklu döviz, Telegram botu ve AI entegrasyonu tek platformda.
+          </p>
+          <div class="coming-meta" data-tr="Proje Detaylarını Gör" data-en="View Project Details">Proje Detaylarını Gör</div>
+        </div>
+      </a>
+      <div class="coming-card">
+        <div class="coming-icon">🌐</div>
+        <div class="coming-title">SIBling Web</div>
+        <p class="coming-desc" data-tr="KOBİ'ler için tasarımdan deploy'a kadar tam-yönetilen web stüdyo hizmeti. Hızlı, modern, SEO uyumlu siteler." data-en="Fully-managed web studio for SMBs from design to deploy. Fast, modern, SEO-friendly sites.">
+          KOBİ'ler için tasarımdan deploy'a kadar tam-yönetilen web stüdyo hizmeti.
+        </p>
+        <div class="coming-meta">2027 · Q1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA BANNER ════════════════════════════════════════════════ -->
+<div class="cta-banner reveal">
+  <h2 class="cta-banner-title">
+    <span data-tr="Birlikte" data-en="Let's Build">Birlikte</span>
+    <span class="serif-italic" data-tr="İnşa Edelim." data-en="Together.">İnşa Edelim.</span>
+  </h2>
+  <p class="cta-banner-sub" data-tr="Fikrini gerçeğe dönüştürmenin tam zamanı. Bize ulaş, projeni konuşalım." data-en="The perfect moment to turn your idea into reality. Reach out and let's talk about your project.">Fikrini gerçeğe dönüştürmenin tam zamanı. Bize ulaş, projeni konuşalım.</p>
+  <a class="cta-banner-btn" href="https://www.instagram.com/siblingsoftware?igsh=d3d2em52bmI2a2hl" target="_blank" rel="noopener noreferrer" data-tr="Instagram'dan Yaz" data-en="Message on Instagram">Instagram'dan Yaz →</a>
+</div>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid" style="max-width:1280px;margin:0 auto 48px">
+    <div class="footer-brand-col">
+      <a class="nav-logo footer-logo" href="#" aria-label="SIBling Software">
+        <img class="nav-logo-img" src="assets/logo-white.png" alt="SIBling Software" />
+      </a>
+      <p class="footer-brand-desc" data-tr="Web, mobil ve otomasyon alanlarında yenilikçi yazılım çözümleri üretiyoruz. Geleceği birlikte kodluyoruz." data-en="Innovative software solutions in web, mobile and automation. Coding the future, together.">
+        Web, mobil ve otomasyon alanlarında yenilikçi yazılım çözümleri üretiyoruz.
+      </p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/siblingsoftware?igsh=d3d2em52bmI2a2hl" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-col-title" data-tr="Hizmetler" data-en="Services">Hizmetler</div>
+      <ul class="footer-col-list">
+        <li><a href="#features" data-tr="Web Uygulama" data-en="Web Application">Web Uygulama</a></li>
+        <li><a href="#features" data-tr="Mobil Uygulama" data-en="Mobile Application">Mobil Uygulama</a></li>
+        <li><a href="#features" data-tr="Otomasyon" data-en="Automation">Otomasyon</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title" data-tr="Proje" data-en="Project">Proje</div>
+      <ul class="footer-col-list">
+        <li><a href="#project">Smart Attendance</a></li>
+        <li><a href="#how-it-works" data-tr="Nasıl Çalışır" data-en="How It Works">Nasıl Çalışır</a></li>
+        <li><a href="#architecture" data-tr="Mimari" data-en="Architecture">Mimari</a></li>
+        <li><a href="#tech" data-tr="Teknoloji" data-en="Tech Stack">Teknoloji</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title" data-tr="Şirket" data-en="Company">Şirket</div>
+      <ul class="footer-col-list">
+        <li><a href="#about" data-tr="Hakkımızda" data-en="About">Hakkımızda</a></li>
+        <li><a href="#coming" data-tr="Yakında Gelecek" data-en="Coming Soon">Yakında Gelecek</a></li>
+        <li><a href="#about" data-tr="Vizyon" data-en="Vision">Vizyon</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title" data-tr="İletişim" data-en="Contact">İletişim</div>
+      <ul class="footer-col-list">
+        <li><a href="https://www.instagram.com/siblingsoftware?igsh=d3d2em52bmI2a2hl" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href="https://www.instagram.com/siblingsoftware?igsh=d3d2em52bmI2a2hl" target="_blank" rel="noopener noreferrer">@siblingsoftware</a></li>
+        <li style="color:var(--muted2);font-size:12px;margin-top:6px">Türkiye</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom" style="max-width:1280px;margin:0 auto">
+    <span class="footer-copy">© 2026 SIBling Software. <span data-tr="Tüm hakları saklıdır." data-en="All rights reserved.">Tüm hakları saklıdır.</span></span>
+    <div class="footer-bottom-links">
+      <a href="#about" data-tr="Hakkımızda" data-en="About">Hakkımızda</a>
+      <a href="#features" data-tr="Hizmetler" data-en="Services">Hizmetler</a>
+      <a href="#coming" data-tr="Yakında" data-en="Soon">Yakında</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ SCRIPTS ═══════════════════════════════════════════════════ -->
+<script>
+  /* ── Bar chart (Smart Attendance haftalık verisi) ─── */
+  const barHeights = [42, 58, 51, 72, 65, 80, 60, 88, 70, 78, 62, 92];
+  const barWrap = document.getElementById('barChart');
+  if (barWrap) {
+    barHeights.forEach(h => {
+      const b = document.createElement('div');
+      b.className = 'bar';
+      b.style.height = h + '%';
+      barWrap.appendChild(b);
+    });
+  }
+
+  /* ── Parallax dashboard + nav scroll state (rAF throttled) ─── */
+  const dashImg = document.getElementById('dashImg');
+  const navEl   = document.getElementById('nav');
+  let lastScrollY = 0;
+  let scrollTicking = false;
+
+  function applyScrollEffects() {
+    const y = lastScrollY;
+    if (dashImg) {
+      const parallax = y * 0.20 < 200 ? y * 0.20 : 200;
+      dashImg.style.transform = `translate3d(0, -${parallax}px, 0)`;
+    }
+    if (navEl) navEl.classList.toggle('scrolled', y > 30);
+    scrollTicking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    lastScrollY = window.scrollY;
+    if (!scrollTicking) {
+      requestAnimationFrame(applyScrollEffects);
+      scrollTicking = true;
+    }
+  }, { passive: true });
+
+  /* ── Scroll-reveal (IntersectionObserver — scroll listener'dan ayrı, çok daha hızlı) ─── */
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -60px 0px', threshold: 0.05 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }
+
+  /* ── Dashboard tab switching ─── */
+  document.querySelectorAll('.dash-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.dash-tab').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  /* ── Language System (TR/EN) ─── */
+  let currentLang = localStorage.getItem('sibLang') || 'tr';
+
+  function setLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('sibLang', lang);
+    document.querySelectorAll('[data-tr]').forEach(el => {
+      const txt = lang === 'tr' ? el.dataset.tr : el.dataset.en;
+      if (txt !== undefined) el.textContent = txt;
+    });
+    document.documentElement.lang = lang;
+    document.getElementById('lang-tr').classList.toggle('active', lang === 'tr');
+    document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+  }
+  setLang(currentLang);
+
+  /* ── Mobile menu ─── */
+  function toggleMobileMenu() {
+    const m = document.getElementById('mobileNav');
+    m.classList.toggle('open');
+    document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+  }
+</script>
+</body>
+</html>
